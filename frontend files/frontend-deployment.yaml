@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: car-frontend
+  template:
+    metadata:
+      labels:
+        app: car-frontend
+    spec:
+      containers:
+      - name: car-frontend
+        image: 281619072947.dkr.ecr.us-east-1.amazonaws.com/car-frontend:latest
+        ports:
+        - containerPort: 80

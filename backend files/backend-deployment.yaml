@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: car-backend
+  template:
+    metadata:
+      labels:
+        app: car-backend
+    spec:
+      containers:
+      - name: car-backend
+        image: 281619072947.dkr.ecr.us-east-1.amazonaws.com/car-backend:latest
+        ports:
+        - containerPort: 5000
