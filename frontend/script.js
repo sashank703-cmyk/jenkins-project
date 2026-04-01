@@ -1,4 +1,4 @@
-const api = "http://backend:5000/cars";
+const api = "http://44.200.137.153:5000/cars";
 
 function loadCars(){
 
