@@ -5,14 +5,18 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
+                echo 'Cloning repository...'
                 git 'https://github.com/sashank703-cmyk/jenkins-project.git'
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy App') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d --build'
+                echo 'Deploying using Docker Compose...'
+                sh '''
+                docker-compose down || true
+                docker-compose up -d --build
+                '''
             }
         }
     }
