@@ -1,8 +1,9 @@
-const api = "http://YOUR_EC2_PUBLIC_IP:5000/cars";
+const api = "http://backend:5000/cars";
 
 function loadCars(){
 
 fetch(api)
+
 
 .then(res => res.json())
 
