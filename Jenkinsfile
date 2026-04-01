@@ -5,38 +5,14 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                checkout scm
+                git 'https://github.com/sashank703-cmyk/jenkins-project.git'
             }
         }
 
-        stage('Install Backend Dependencies') {
+        stage('Deploy') {
             steps {
-                dir('backend') {
-                    sh 'npm install'
-                }
-            }
-        }
-
-        stage('Install Frontend Dependencies') {
-            steps {
-                dir('frontend') {
-                    sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build Frontend') {
-            steps {
-                dir('frontend') {
-                    sh 'npm run build'
-                }
-            }
-        }
-
-        stage('Deploy App') {
-            steps {
-                sh 'docker compose down || true'
-                sh 'docker compose up -d --build'
+                sh 'docker-compose down || true'
+                sh 'docker-compose up -d --build'
             }
         }
     }
